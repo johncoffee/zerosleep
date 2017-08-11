@@ -1,4 +1,4 @@
 zerosleep
 =========
 
-Website for my game jam calendar
+Website for my game jam calendar.

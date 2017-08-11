@@ -6,4 +6,5 @@ iframe {
     width: 100%;
     min-height: 700px;
     height: 90%;
+    border-width: 0;
 }
