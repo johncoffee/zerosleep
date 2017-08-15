@@ -1,6 +1,6 @@
 html, body {
     height:100%;
-    background: white url("images/04116_stavrovouni_1680x1050.jpg");
+    background: white url("images/bg.jpg");
 }
 
 iframe {
@@ -10,5 +10,11 @@ iframe {
 
 .text-white {
     color: #fff;
+}
+
+.header {
+    margin: .5rem 0 .75rem;
+    font-size: 1.5rem;
+    font-weight:bold;
 }
 
