@@ -9,7 +9,7 @@ else
 	APPEND=1>/dev/null
 endif
 
-publish:
+add:
 	@ipfs swarm peers >/dev/null 2>&1 || ( \
 		echo "error: ipfs daemon must be online to publish"; \
 		echo "try running: ipfs daemon" && exit 1)
@@ -26,3 +26,12 @@ publish:
 		echo "ipfs pin rm $$hash2"; \
 		echo "ipfs pin update $$hash2 $$hash"; \
 		echo "ipfs name publish $$hash"; \
+
+publish:
+	@ipfs swarm peers >/dev/null 2>&1 || ( \
+		echo "error: ipfs daemon must be online to publish"; \
+		echo "try running: ipfs daemon" && exit 1)
+	cat versions/current.txt | ipfs pin rm
+	ipfs add -rQw ./ | tail -n1 >versions/current.txt
+	cat versions/current.txt >>versions/history.txt
+	echo "/ipfs/$(cat versions/current.txt)" | ipfs name publish
