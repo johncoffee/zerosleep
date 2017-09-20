@@ -2,35 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Zero Sleep</title>
-    <link rel="stylesheet" crossorigin="anonymous" integrity="sha256-NqI559iHqiWe5VxDi9mXE8i83ghn8Ru8BINyiPN7lDg=" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+    <title>The Zero-Sleep calendar</title>
+    <!--<link rel="stylesheet" crossorigin="anonymous" integrity="sha256-NqI559iHqiWe5VxDi9mXE8i83ghn8Ru8BINyiPN7lDg=" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">-->
+    <link rel="stylesheet" href="vendor/foundation.min.css" integrity="sha256-NqI559iHqiWe5VxDi9mXE8i83ghn8Ru8BINyiPN7lDg=">
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="row">
-    <div class="column">
-        <h3 class="header">
-            The Zero-Sleep calendar
-        </h3>
+<header class="header">
+    <div class="row">
+        <div class="column">
+            <h1 class="header-h1">
+                The Zero-Sleep calendar
+            </h1>
+        </div>
     </div>
-</div>
+</header>
 
 <div class="row">
-    <div class="columns">
-
+    <section class="columns medium-9">
         <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;height=500&amp;wkst=2&amp;hl=en_GB&amp;bgcolor=%23ffffff&amp;src=fv42obiik5asektru82ck52hbs%40group.calendar.google.com&amp;color=&amp;ctz=Europe%2FCopenhagen" style="border-width:0"
                 height="500" frameborder="0" scrolling="no"></iframe>
-    </div>
-</div>
+        <article class="row">
+            <div class="column">
+                <p style="background: rgba(255,255,255,0.78);">
+                    Am i missing an event? Are you hosting an event?
+                    <my-email data-user="zerosleep2017" data-domain="ragelse.dk"></my-email>
+                    <!-- cool stuff: https://www.labnol.org/internet/hide-email-address-web-pages/28364/ -->
+            </div>
+        </article>
+    </section>
+    <section class="columns medium-3">
+        <article>
+            <h5>What is a hackathon?</h5>
+            <p class="text-small">
+                <em>Hackathon</em> <span class="grey">/ˈhæk əˌθɒn/</span>
+                and <em>game jam</em> are the general terms for an event where a group of people
+                try and build something
+                new with technology, programming, creative skills.
+                It's not to be compared to a LAN party.
+            </p>
+            <p class="text-small">
+                Zerosleep.dk is my personal calendar of all the game jams, hackathons and competitions I
+                could possibly attend. No online-only jams, only events that takes place IRL.
+            </p>
+        </article>
 
-<div class="row">
-    <div class="column">
-        <p style="background: rgba(255,255,255,0.78);">
-            Am i missing an event? Are you hosting an event? Shoot an email to zerosleep2017@ragelse.dk
-    </div>
-</div>
+        <article>
+            <h4>Great events</h4>
+            <p>
+                <strong>Nordic Game Jam</strong>
+                <a href="http://nordicgamejam.org/">web</a>
+                <a href="https://www.facebook.com/nordicgamejam/">FB</a>
+            </p>
+            <p>
+                <strong>Hack4dk</strong>
+                <a href="https://www.facebook.com/hack4dk/">FB</a>
+                <a href="https://twitter.com/hack4dk">TW</a>
 
+            </p>
+            <p>
+                <strong>Hackjunction</strong>
+                <a href="https://hackjunction.com/">web</a>
+                <a href="https://www.facebook.com/hackjunction">FB</a>
+            </p>
+        </article>
+    </section>
+</div>
 
 </body>
 </html>
