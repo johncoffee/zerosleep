@@ -27,4 +27,12 @@ my-email::before {
     font-size: 0.85em;
 }
 
-h2,h3,h4,h5 {color: #5d74ba}
+h1,h2,h3,h4,h5 {margin-bottom: 0.5em}
+
+a, h2,h3,h4,h5 {color: #5d74ba}
+
+dd, dt {
+    display: inline;
+    line-height: 1.85rem;
+}
+dd {margin: 0;}
