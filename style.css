@@ -34,3 +34,12 @@ a, h2,h3,h4,h5 {color: #5d74ba}
 .list-item {
     margin: 0.5em 0;
 }
+
+.check-update:empty {
+    display: none;
+}
+.check-update {
+    padding: .5rem 1rem;
+    background: #e0f5d9;
+    margin-bottom: 1rem;
+}

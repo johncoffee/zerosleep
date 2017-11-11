@@ -6,6 +6,35 @@
     <link rel="stylesheet" href="vendor/foundation-6.4.2-custom/css/foundation.min.css">
     <link href="style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script type="module" src="./check-update.js"></script>
+    <script type="module">
+        import {getVersion, isSemVerBigger} from "./check-update.js"
+
+        const dnsName = `zerosleep.dk`
+        async function doCheck() {
+          let ipnsVersion, thisVersion
+          try {
+            [ipnsVersion, thisVersion] = await Promise.all([
+              getVersion(`${location.pathname}package.json`),
+              getVersion(`//${location.host}/ipns/${dnsName}/package.json`),
+            ])
+          }
+          catch (e) {
+            console.error(e)
+            return
+          }
+
+          console.debug(ipnsVersion, 'vs', thisVersion)
+          if (isSemVerBigger(ipnsVersion, thisVersion)) {
+            console.debug("new version!", ipnsVersion, 'vs', thisVersion)
+            document.querySelector('.check-update').innerHTML = `A new publication of this website is available!
+                Get it at <a href="//${location.host}/ipns/${dnsName}/">${location.host}/ipns/${dnsName}</a>`
+          }
+        }
+        doCheck()
+        // document.querySelector('.check-update').innerHTML = `A new publication of this website is available!
+        //         Get it at <a href="//${location.host}/ipns/${dnsName}/">${location.host}/ipns/${dnsName}</a>`
+    </script>
 </head>
 <body>
 
@@ -28,8 +57,9 @@
 
 <div class="grid-container">
     <div class="grid-x grid-margin-x">
+        <section class="check-update cell small-12"></section>
         <section class="cell large-9">
-            <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;height=500&amp;wkst=2&amp;hl=en_GB&amp;bgcolor=%23ffffff&amp;src=fv42obiik5asektru82ck52hbs%40group.calendar.google.com&amp;color=&amp;ctz=Europe%2FCopenhagen" style="border-width:0" height="500" frameborder="0" scrolling="no"></iframe>
+            <!--<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;height=500&amp;wkst=2&amp;hl=en_GB&amp;bgcolor=%23ffffff&amp;src=fv42obiik5asektru82ck52hbs%40group.calendar.google.com&amp;color=&amp;ctz=Europe%2FCopenhagen" style="border-width:0" height="500" frameborder="0" scrolling="no"></iframe>-->
             <article class="grid-x grid-margin-x">
                 <div class="cell auto">
                     Am I missing an event?
