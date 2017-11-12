@@ -29,14 +29,17 @@
                 Get it at <a href="//${location.host}/ipns/${dnsName}/">/ipns/${dnsName}</a>`
           }
         }
-        setTimeout(() => {
-          try {
-            doCheck(`${location.pathname}package.json`)
-          }
-          catch (e) {
-            console.error(e)
-          }
-        }, 2500)
+
+        if (location.pathname.indexOf('/ipfs/') !== -1) {
+            setTimeout(() => {
+              try {
+                doCheck(`${location.pathname}package.json`)
+              }
+              catch (e) {
+                console.error(e)
+              }
+            }, 2500)
+        }
 
         window.zerosleep = {
           doCheck
