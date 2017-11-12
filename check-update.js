@@ -1,6 +1,9 @@
 
 export async function getVersion (url) {
   const response = await fetch(url)
+  if (response.status !== 200) {
+    throw {message: `${url} responded ${response.status} (not 200 OK)`}
+  }
 
   const text = await response.text()
 
@@ -19,8 +22,6 @@ export async function getVersion (url) {
   throw {message: 'Failed getting version; bad version string'}
 }
 
-export function isSemVerBigger (subject, reference) {
-  return (subject.major > reference.major ||
-    subject.minor > reference.minor ||
-    subject.patch > reference.patch)
+export function isMajorGreater (subject, reference) {
+  return (subject.major > reference.major)
 }

@@ -8,32 +8,39 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script type="module" src="./check-update.js"></script>
     <script type="module">
-        import {getVersion, isSemVerBigger} from "./check-update.js"
+        import {getVersion, isMajorGreater} from "./check-update.js"
 
         const dnsName = `zerosleep.dk`
-        async function doCheck() {
-          let ipnsVersion, thisVersion
-          try {
-            [ipnsVersion, thisVersion] = await Promise.all([
-              getVersion(`${location.pathname}package.json`),
-              getVersion(`//${location.host}/ipns/${dnsName}/package.json`),
-            ])
-          }
-          catch (e) {
-            console.error(e)
-            return
-          }
+        async function doCheck(comparePackageUrl) {
 
-          console.debug(ipnsVersion, 'vs', thisVersion)
-          if (isSemVerBigger(ipnsVersion, thisVersion)) {
-            console.debug("new version!", ipnsVersion, 'vs', thisVersion)
+          console.debug('checking versions....')
+          const [
+            ipnsVersion,
+            thisVersion
+          ] = await Promise.all([
+              getVersion(`//${location.host}/ipns/${dnsName}/package.json`),
+              getVersion(comparePackageUrl),
+            ])
+
+          console.debug((isMajorGreater(ipnsVersion, thisVersion)), ipnsVersion, 'vs', thisVersion)
+
+          if (isMajorGreater(ipnsVersion, thisVersion)) {
             document.querySelector('.check-update').innerHTML = `A new publication of this website is available!
-                Get it at <a href="//${location.host}/ipns/${dnsName}/">${location.host}/ipns/${dnsName}</a>`
+                Get it at <a href="//${location.host}/ipns/${dnsName}/">/ipns/${dnsName}</a>`
           }
         }
         setTimeout(() => {
-          doCheck()
-        }, 5000)
+          try {
+            doCheck(`${location.pathname}package.json`)
+          }
+          catch (e) {
+            console.error(e)
+          }
+        }, 2500)
+
+        window.zerosleep = {
+          doCheck
+        }
     </script>
 </head>
 <body>
