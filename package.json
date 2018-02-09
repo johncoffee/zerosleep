@@ -6,7 +6,8 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johncoffee/zerosleep.git"
+    "url": "git+https://github.com/johncoffee/zerosleep.git",
+    "postversion": "make -f node_modules/ipfs-pwa-tools/Makefile add"
   },
   "author": "",
   "license": "ISC",
