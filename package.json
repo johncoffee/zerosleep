@@ -1,12 +1,13 @@
 {
   "name": "zerosleep",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "zerosleep",
   "main": "",
   "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johncoffee/zerosleep.git",
+    "preversion": "echo nice",
     "postversion": "make -f node_modules/ipfs-pwa-tools/Makefile add"
   },
   "author": "",
