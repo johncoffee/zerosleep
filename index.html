@@ -30,7 +30,7 @@
           }
         }
 
-        if (location.pathname.indexOf('/ipfs/') !== -1) {
+        if (sessionStorage.docheck && location.pathname.indexOf('/ipfs/') !== -1) {
             setTimeout(() => {
               try {
                 doCheck(`${location.pathname}package.json`)
@@ -116,13 +116,14 @@
                     <a href="https://www.facebook.com/copenhagenstartupweekend/">Startup Weekend</a>
                 </p>
 
-                <h3>Sources</h3>
+                <h3>Other sources</h3>
                 <p class="list-item">
-                    <a href="https://www.startupdigest.com/digests/copenhagen">startupdigest.com</a><br>
-                </p>
+                    <a href="https://www.startupdigest.com/digests/copenhagen">startupdigest.com</a>
                 <p class="list-item">
-                    <a href="https://devpost.com/hackathons?utf8=%E2%9C%93&search=denmark&challenge_type=in-person&sort_by=Recently+Added">devpost.com</a>
-                </p>
+                    <a href="https://www.hackathon.com">hackathon.com</a>               
+                <p class="list-item">
+                    <a href="https://devpost.com/hackathons?utf8=%E2%9C%93&search=denmark&challenge_type=in-person&sort_by=Recently+Added">
+                        devpost.com</a>
             </article>
         </section>
     </div>
