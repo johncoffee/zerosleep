@@ -70,7 +70,26 @@
     <div class="grid-x grid-margin-x">
         <section class="check-update cell small-12"></section>
         <section class="cell large-9">
+            <div class="hide fallback-img">
+                <h4 style="color:#800">Offline screenshot of calendar</h4>
+                <img style="border: 2px solid #800; width: 100%">
+            </div>
             <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;height=500&amp;wkst=2&amp;hl=en_GB&amp;bgcolor=%23ffffff&amp;src=fv42obiik5asektru82ck52hbs%40group.calendar.google.com&amp;color=&amp;ctz=Europe%2FCopenhagen" style="border-width:0" height="500" frameborder="0" scrolling="no"></iframe>
+            <script async>
+              const _handle = setTimeout(showFallbackImg, 3000)
+
+              document.querySelector('iframe').addEventListener('load', () => {
+                clearTimeout(_handle)
+                showFallbackImg(false)
+              })
+
+                function showFallbackImg (show = true) {
+                  console.debug("Show fallback")
+                  document.querySelector('.fallback-img').classList[show ? "remove" : "add"]('hide')
+                  if (show) document.querySelector('.fallback-img img').setAttribute('src', 'img/Screen%20Shot%202018-10-06%20at%2016.41.47.png')
+                  document.querySelector('iframe').classList[show ? "add" : "remove"]('hide')
+                }
+            </script>
             <article class="grid-x grid-margin-x">
                 <div class="cell auto">
                     Am I missing an event?
