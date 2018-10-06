@@ -31,7 +31,7 @@
           }
         }
 
-        if (sessionStorage.docheck && location.pathname.indexOf('/ipfs/') !== -1) {
+        if (sessionStorage.docheck) {
             setTimeout(() => {
               try {
                 doCheck(`${location.pathname}package.json`)
