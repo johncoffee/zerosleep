@@ -84,10 +84,9 @@
               })
 
                 function showFallbackImg (show = true) {
-                  console.debug("Show fallback")
                   document.querySelector('.fallback-img').classList[show ? "remove" : "add"]('hide')
-                  if (show) document.querySelector('.fallback-img img').setAttribute('src', 'img/Screen%20Shot%202018-10-06%20at%2016.41.47.png')
                   document.querySelector('iframe').classList[show ? "add" : "remove"]('hide')
+                  if (show) document.querySelector('.fallback-img img').setAttribute('src', 'img/Screen%20Shot%202018-10-06%20at%2016.41.47.png')
                 }
             </script>
             <article class="grid-x grid-margin-x">
