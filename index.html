@@ -46,22 +46,48 @@
           doCheck
         }
     </script>
+    <script defer>
+      // where am i?
+      function determineLocation() {
+        let selector = ''
+        if (location.host.includes("zerosleep.dk")) {
+          selector = '.link-dns'
+        }
+        else if (location.href.startsWith("dat:")) {
+          selector = '.link-dat'
+        }
+        else if (location.href.includes("ipfs/")) {
+          selector = '.link-ipfs'
+        }
+        else if (location.host.includes("github")) {
+          selector = '.link-gh-pages'
+        }
+        let el = document.querySelector(selector)
+        if (el) {
+          el.textContent += " (you are here!)"
+        }
+      }
+
+      determineLocation()
+    </script>
+
 </head>
 <body>
 
 <header class="header">
     <div class="grid-container">
         <div class="grid-x">
-            <div class="cell small-8">
+            <div class="cell auto">
                 <h1 class="header-h1">
                     The Zero-Sleep calendar
                 </h1>
             </div>
-            <p class="cell small-4" style="margin-top: 0.6rem; text-align: right">
-                <a href="http://zerosleep.dk/">dns</a>
-                <a href="https://ipfs.io/ipns/zerosleep.dk/">ipns</a>
-                <a href="dat://444448ba365000450573ac4bedd73d9ec92c57319eba0e64e9ee633d3feb6451/">dat</a>
-                <a href="https://github.com/johncoffee/zerosleep/">github</a>
+            <p class="cell auto shrink" style="margin-top: 0.6rem; text-align: right">
+                <span>This site can be found at:</span>
+                <a class="link-gh-pages" href="https://github.com/johncoffee/zerosleep/">github pags</a>,
+                <a class="link-dat" href="dat://444448ba365000450573ac4bedd73d9ec92c57319eba0e64e9ee633d3feb6451/">Dat</a>,
+                <a class="link-ipfs" href="https://ipfs.io/ipns/zerosleep.dk/">IPFS</a>, or
+                <a class="link-dns" href="http://zerosleep.dk/">zerosleep.dk</a>
             </p>
         </div>
     </div>
