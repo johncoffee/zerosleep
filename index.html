@@ -7,45 +7,7 @@
     <link href="style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <base href="./">
-    <script type="module" src="./check-update.js"></script>
-    <script type="module">
-        import {getVersion, isMajorGreater} from "./check-update.js"
 
-        const dnsName = `zerosleep.dk`
-        async function doCheck(comparePackageUrl) {
-
-          console.debug('checking versions....')
-          const [
-            ipnsVersion,
-            thisVersion
-          ] = await Promise.all([
-              getVersion(`//${location.host}/ipns/${dnsName}/package.json`),
-              getVersion(comparePackageUrl),
-            ])
-
-          console.debug((isMajorGreater(ipnsVersion, thisVersion)), ipnsVersion, 'vs', thisVersion)
-
-          if (isMajorGreater(ipnsVersion, thisVersion)) {
-            document.querySelector('.check-update').innerHTML = `A new publication of this website is available!
-                Get it at <a href="//${location.host}/ipns/${dnsName}/">/ipns/${dnsName}</a>`
-          }
-        }
-
-        if (sessionStorage.docheck) {
-            setTimeout(() => {
-              try {
-                doCheck(`${location.pathname}package.json`)
-              }
-              catch (e) {
-                console.error(e)
-              }
-            }, 2500)
-        }
-
-        window.zerosleep = {
-          doCheck
-        }
-    </script>
     <script defer>
       // where am i?
       function determineLocation() {
