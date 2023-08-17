@@ -27,27 +27,6 @@
                 <a class="link-dns" href="http://zerosleep.dk/">zerosleep.dk</a>
             </p>
 
-            <script>
-                    let selector = ''
-                    if (location.host.includes("zerosleep.dk")) {
-                        selector = '.link-dns'
-                    }
-                    else if (location.href.startsWith("dat:")) {
-                        selector = '.link-dat'
-                    }
-                    else if (location.href.includes("ipfs/")) {
-                        selector = '.link-ipfs'
-                    }
-                    else if (location.host.includes("github")) {
-                        selector = '.link-gh-pages'
-                    }
-                    const el = document.querySelector(selector)
-                    if (el)
-                        document.querySelector(selector).textContent += " (you are here!)"
-            </script>
-
-
-
         </div>
     </div>
 </header>
@@ -61,21 +40,6 @@
                 <img style="border: 2px solid #800; width: 100%">
             </div>
             <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;height=500&amp;wkst=2&amp;hl=en_GB&amp;bgcolor=%23ffffff&amp;src=fv42obiik5asektru82ck52hbs%40group.calendar.google.com&amp;color=&amp;ctz=Europe%2FCopenhagen" style="border-width:0" height="500" frameborder="0" scrolling="no"></iframe>
-            <script async>
-              const _handle = setTimeout(showFallbackImg, 10_000)
-
-              document.querySelector('iframe').addEventListener('load', () => {
-                clearTimeout(_handle)
-                showFallbackImg(false)
-              })
-
-                function showFallbackImg (show = true) {
-                  document.querySelector('.fallback-img').classList[show ? "remove" : "add"]('hide')
-                  document.querySelector('iframe').classList[show ? "add" : "remove"]('hide')
-                  if (show)
-                      document.querySelector('.fallback-img img').setAttribute('src', 'img/Screen%20Shot%202018-10-06%20at%2016.41.47.png')
-                }
-            </script>
             <article class="grid-x grid-margin-x">
                 <div class="cell auto">
                     Am I missing an event?
@@ -94,12 +58,8 @@
                 <h4>What is a hackathon?</h4>
                 <p class="text-small">
                     <em>Hackathon</em> <span class="grey">/ˈhæk əˌθɒn/</span>
-                    and <em>game jam</em> are terms for an event where a group of
-                    people try and build something new with technology, programming, creative skills.
-                </p>
-                <p class="text-small">
-                    Zerosleep.dk is my personal calendar of all the game jams, hackathons and competitions I
-                    could possibly attend. No online-only jams, only events that takes place IRL.
+                    and <em>game jam</em> are events where hobbyists and professionals
+                    go to play with technology.
                 </p>
             </article>
 
@@ -141,5 +101,39 @@
     </div>
 </div>
 
+<script>
+    // use image if google not available
+    {
+        function showFallbackImg (show = true) {
+            const last = 'img/Screen%20Shot%202018-10-06%20at%2016.41.47.png'
+            document.querySelector('.fallback-img').classList[show ? "remove" : "add"]('hide')
+            document.querySelector('iframe').classList[show ? "add" : "remove"]('hide')
+            if (show)
+                document.querySelector('.fallback-img img').setAttribute('src', last)
+        }
+        const _handle = setTimeout(showFallbackImg, 10_000)
+        document.querySelector('iframe').addEventListener('load', () => {
+            clearTimeout(_handle)
+            showFallbackImg(false)
+        })
+    }
+
+    // you are here
+    {
+        let selector = ''
+        if (location.host.includes("zerosleep.dk")) {
+            selector = '.link-dns'
+        } else if (location.href.startsWith("dat:")) {
+            selector = '.link-dat'
+        } else if (location.href.includes("ipfs/")) {
+            selector = '.link-ipfs'
+        } else if (location.host.includes("github")) {
+            selector = '.link-gh-pages'
+        }
+        const el = document.querySelector(selector)
+        if (el)
+            document.querySelector(selector).textContent += " (you are here!)"
+    }
+</script>
 </body>
 </html>
