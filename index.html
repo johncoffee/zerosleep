@@ -8,32 +8,6 @@
     <link href="style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <base href="./">
-
-    <script defer>
-      // where am i?
-      function determineLocation() {
-        let selector = ''
-        if (location.host.includes("zerosleep.dk")) {
-          selector = '.link-dns'
-        }
-        else if (location.href.startsWith("dat:")) {
-          selector = '.link-dat'
-        }
-        else if (location.href.includes("ipfs/")) {
-          selector = '.link-ipfs'
-        }
-        else if (location.host.includes("github")) {
-          selector = '.link-gh-pages'
-        }
-        let el = document.querySelector(selector)
-        if (el) {
-          el.textContent += " (you are here!)"
-        }
-      }
-
-      determineLocation()
-    </script>
-
 </head>
 <body>
 
@@ -47,11 +21,33 @@
             </div>
             <p class="cell auto shrink" style="margin-top: 0.6rem; text-align: right">
                 <span>This site can be found at:</span>
-                <a class="link-gh-pages" href="https://github.com/johncoffee/zerosleep/">github pags</a>,
+                <a class="link-gh-pages" href="https://johncoffee.github.io/zerosleep/">github</a>,
                 <a class="link-dat" href="dat://444448ba365000450573ac4bedd73d9ec92c57319eba0e64e9ee633d3feb6451/">Dat</a>,
                 <a class="link-ipfs" href="https://ipfs.io/ipns/zerosleep.dk/">IPFS</a>, or
                 <a class="link-dns" href="http://zerosleep.dk/">zerosleep.dk</a>
             </p>
+
+            <script>
+                    let selector = ''
+                    if (location.host.includes("zerosleep.dk")) {
+                        selector = '.link-dns'
+                    }
+                    else if (location.href.startsWith("dat:")) {
+                        selector = '.link-dat'
+                    }
+                    else if (location.href.includes("ipfs/")) {
+                        selector = '.link-ipfs'
+                    }
+                    else if (location.host.includes("github")) {
+                        selector = '.link-gh-pages'
+                    }
+                    const el = document.querySelector(selector)
+                    if (el)
+                        document.querySelector(selector).textContent += " (you are here!)"
+            </script>
+
+
+
         </div>
     </div>
 </header>
